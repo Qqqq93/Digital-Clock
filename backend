@@ -1,0 +1,21 @@
+// server.js
+const express = require("express");
+const app = express();
+const port = 3000;
+
+// Endpoint to get current server time
+app.get("/time", (req, res) => {
+  const now = new Date();
+  const timeData = {
+    hours: now.getHours(),
+    minutes: now.getMinutes(),
+    seconds: now.getSeconds(),
+    fullTime: now.toLocaleTimeString(),
+    date: now.toDateString()
+  };
+  res.json(timeData);
+});
+
+app.listen(port, () => {
+  console.log(`Digital Clock backend running on http://localhost:${port}`);
+});
